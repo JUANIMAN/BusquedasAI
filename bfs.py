@@ -3,33 +3,37 @@ class Grafo:
         self.conexiones = conexiones
 
     def vecinos(self, nodo, sentido_horario=True):
-        return self.conexiones[nodo] if sentido_horario else list(reversed(self.conexiones[nodo]))
+        return self.conexiones[nodo] if sentido_horario else self.conexiones[nodo][::-1]
 
 class BFS:
     def __init__(self, grafo):
         self.grafo = grafo
-
+        self.visitado = set()
+        self.salida = []
+    
     def buscar(self, nodo_inicial, nodo_final, sentido_horario=True):
-        visitado = set()  # Conjunto para llevar un registro de los nodos visitados
-        cola = [nodo_inicial]  # Cola para los nodos que se deben visitar
-        salida = []  # Lista para el orden de salida de los nodos visitados
+        self._buscar(nodo_inicial, nodo_final, sentido_horario)
+        return self.salida
+
+    def _buscar(self, nodo_inicial, nodo_final, sentido_horario):
+        cola = [nodo_inicial]
 
         while cola:
-            nodo = cola.pop(0)  # Sacar el primer nodo de la cola
-            if nodo not in visitado:
-                visitado.add(nodo)
-                salida.append(nodo)  # Agregar el nodo a la lista de salida
+            nodo = cola.pop(0)
+            if nodo not in self.visitado:
+                self.visitado.add(nodo)
+                self.salida.append(nodo)
 
                 # Si el nodo es el nodo final, detener la búsqueda
                 if nodo == nodo_final:
-                    return salida
+                    return self.salida
 
                 # Agregar todos los nodos adyacentes no visitados a la cola
                 for vecino in self.grafo.vecinos(nodo, sentido_horario):
-                    if vecino not in visitado:
+                    if vecino not in self.visitado:
                         cola.append(vecino)
 
-        return salida
+        return self.salida
 
 # Definir las conexiones
 conexiones = {
@@ -70,7 +74,7 @@ bfs = BFS(grafo)
 # Definir el nodo inicial, el nodo final y el sentido de la búsqueda
 nodo_inicial = '7'
 nodo_final = '10'
-sentido_horario = True
+sentido_horario = False
 
 # Realizar la búsqueda en amplitud
 resultado_bfs = bfs.buscar(nodo_inicial, nodo_final, sentido_horario)
