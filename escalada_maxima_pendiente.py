@@ -1,7 +1,7 @@
 import grafo
 import distancias_grafo
 
-class escalada_simple:
+class escalada_maxima_pendiente:
     def __init__(self, grafo):
         self.grafo = grafo
         self.visitado = set()
@@ -16,27 +16,28 @@ class escalada_simple:
         self.ruta = [nodo_inicial]
         
         while nodo_actual != nodo_final:
-            found = False
+            mejor_vecino = None
             for vecino in self.grafo.vecinos(nodo_actual, sentido_horario):
-                if vecino not in self.visitado and distancias_grafo.distancias[nodo_actual][vecino] <= distancias_grafo.distancias[nodo_actual][nodo_final]:
-                    self.visitado.add(vecino)
+                if vecino == nodo_final:
                     self.ruta.append(vecino)
-                    nodo_actual = vecino
-                    found = True
-                    break
-            if found:
-                continue
-            return self.ruta
+                    return self.ruta
+                if mejor_vecino is None or distancias_grafo.distancias[vecino][nodo_final] < distancias_grafo.distancias[mejor_vecino][nodo_final]:
+                    mejor_vecino = vecino
+            if mejor_vecino is None or distancias_grafo.distancias[mejor_vecino][nodo_final] >= distancias_grafo.distancias[nodo_actual][nodo_final]:
+                return self.ruta
+            self.visitado.add(mejor_vecino)
+            self.ruta.append(mejor_vecino)
+            nodo_actual = mejor_vecino
         return self.ruta
 
 # Crear un grafo y realizar la búsqueda por escalada simple
 grafo = grafo.Grafo(grafo.conexiones)
-escalada = escalada_simple(grafo)
+escalada = escalada_maxima_pendiente(grafo)
 
 # Definir el nodo inicial, el nodo final y el sentido de la búsqueda
 nodo_inicial = '1'
 nodo_final = '28'
-sentido_horario = True
+sentido_horario = False
 
 # Encontrar la ruta usando escalada simple
 ruta = escalada.buscar(nodo_inicial, nodo_final, sentido_horario)
