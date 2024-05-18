@@ -1,6 +1,7 @@
 # Importamos la clase Grafo
 import grafo
 
+
 # Definimos la clase DFS para la búsqueda en profundidad
 class DFS:
     # Inicializamos la clase con el grafo, un conjunto para los nodos visitados y un diccionario para los padres de los nodos

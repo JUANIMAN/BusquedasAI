@@ -1,6 +1,7 @@
 # Importamos la clase Grafo
 import grafo
 
+
 # Definimos la clase BusquedaEscaladaMaximaPendiente
 class BusquedaEscaladaMaximaPendiente:
     # Inicializamos la clase con el grafo, un conjunto para los nodos visitados y una lista para la ruta
@@ -32,7 +33,8 @@ class BusquedaEscaladaMaximaPendiente:
                     # Calculamos la distancia del vecino al nodo final
                     distancia_vecino = self.grafo.evaluar(vecino, nodo_final)
                     # Si la distancia del vecino es menor que la menor distancia y la distancia del vecino es menor que la distancia del nodo actual al nodo final
-                    if distancia_vecino < menor_distancia and distancia_vecino < self.grafo.evaluar(nodo_actual, nodo_final):
+                    if distancia_vecino < menor_distancia and distancia_vecino < self.grafo.evaluar(nodo_actual,
+                                                                                                    nodo_final):
                         # Actualizamos la menor distancia y el mejor vecino
                         menor_distancia = distancia_vecino
                         mejor_vecino = vecino

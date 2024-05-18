@@ -2,6 +2,7 @@
 import grafo
 import heapq
 
+
 # Definimos la clase Nodo
 class Nodo:
     def __init__(self, valor, padre=None):
@@ -18,6 +19,7 @@ class Nodo:
     # Método para ordenar nodos
     def __lt__(self, otro):
         return self.f < otro.f
+
 
 # Definimos la función AEstrella
 def AEstrella(grafo, nodo_inicial, nodo_final):
@@ -76,6 +78,7 @@ def AEstrella(grafo, nodo_inicial, nodo_final):
 
     # Si no se encontró una ruta, devolvemos None
     return None
+
 
 # Creamos un grafo y realizamos la búsqueda por A*
 grafo = grafo.Grafo(grafo.conexiones)
