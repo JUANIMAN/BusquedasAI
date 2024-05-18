@@ -60,7 +60,7 @@ class BusquedaEscaladaMaximaPendiente:
 
 
 # Creamos un grafo y realizamos la búsqueda por escalada maxima pendiente
-grafo = grafo.Grafo(grafo.conexiones)
+grafo = grafo.Grafo()
 busqueda = BusquedaEscaladaMaximaPendiente(grafo)
 
 # Definimos el nodo inicial, el nodo final y el sentido de la búsqueda

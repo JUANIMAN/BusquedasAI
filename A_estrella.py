@@ -81,7 +81,7 @@ def AEstrella(grafo, nodo_inicial, nodo_final):
 
 
 # Creamos un grafo y realizamos la búsqueda por A*
-grafo = grafo.Grafo(grafo.conexiones)
+grafo = grafo.Grafo()
 
 # Definimos el nodo inicial y el nodo final
 nodo_inicial = '8'

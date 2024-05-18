@@ -1,5 +1,5 @@
 class Grafo:
-    def __init__(self, conexiones):
+    def __init__(self):
         self.conexiones = conexiones
         self.distancias = distancias
 

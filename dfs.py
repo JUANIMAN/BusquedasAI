@@ -51,7 +51,7 @@ class DFS:
 
 
 # Creamos un grafo y realizamos la búsqueda en profundidad
-grafo = grafo.Grafo(grafo.conexiones)
+grafo = grafo.Grafo()
 dfs = DFS(grafo)
 
 # Definimos el nodo inicial, el nodo final y el sentido de la búsqueda

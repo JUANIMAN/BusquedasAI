@@ -49,7 +49,7 @@ class BFS:
 
 
 # Creamos un grafo y realizamos la búsqueda en amplitud
-grafo = grafo.Grafo(grafo.conexiones)
+grafo = grafo.Grafo()
 bfs = BFS(grafo)
 
 # Definimos el nodo inicial, el nodo final y el sentido de la búsqueda

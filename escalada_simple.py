@@ -49,7 +49,7 @@ class BusquedaEscaladaSimple:
 
 
 # Creamos un grafo y realizamos la búsqueda por escalada simple
-grafo = grafo.Grafo(grafo.conexiones)
+grafo = grafo.Grafo()
 busqueda = BusquedaEscaladaSimple(grafo)
 
 # Definimos el nodo inicial, el nodo final y el sentido de la búsqueda
